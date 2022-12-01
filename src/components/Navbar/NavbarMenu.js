@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { NavbarDropdownItem } from "./NavbarDropdownItem";
+import { NavbarDropdown } from "./NavbarDropdown";
 import { NavbarLinkItem } from "./NavbarLinkItem";
 
 let items = [
@@ -50,11 +50,11 @@ export const NavbarMenu = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {items.map((item) =>
+            {items.map((item, index) =>
               item.href && !item.children ? (
                 <NavbarLinkItem key={item.href} {...item} />
               ) : (
-                <NavbarDropdownItem key={item.name} {...item} />
+                <NavbarDropdown key={item.name} {...item} />
               )
             )}
           </Nav>

@@ -1,18 +1,13 @@
-import { Nav } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-
-let activeStyle = {
-  textDecoration: "underline",
-};
+import { Button } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 export const NavbarLinkItem = ({ name, href }) => {
   return (
-    <Nav.Link
-      as={NavLink}
+    <LinkContainer
       to={href}
-      style={({ isActive }) => (isActive ? activeStyle : undefined)}
+      activeClassName="border-bottom border-3 text-info border-info"
     >
-      {name}
-    </Nav.Link>
+      {<Button>{name}</Button>}
+    </LinkContainer>
   );
 };

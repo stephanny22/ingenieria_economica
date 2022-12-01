@@ -1,14 +1,15 @@
-import { NavDropdown } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Button, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
-export const NavbarDropdownItem = ({ name, children }) => {
+export const NavbarDropdownItem = ({ name, href }) => {
   return (
-    <NavDropdown title={name}>
-      {children.map(({ name, href }) => (
-        <NavDropdown.Item key={name} as={NavLink} to={href}>
-          {name}
-        </NavDropdown.Item>
-      ))}
-    </NavDropdown>
+    <NavDropdown.Item
+      key={name}
+      as={LinkContainer}
+      to={href}
+      activeClassName="bg-info text-white"
+    >
+      <Button>{name}</Button>
+    </NavDropdown.Item>
   );
 };

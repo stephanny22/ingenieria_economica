@@ -38,7 +38,7 @@ export const RateConversion = () => {
               className={`form-control ${
                 errors.interes_entrada ? "is-invalid" : undefined
               }`}
-              placeholder="Interes"
+              placeholder="Digite el interes (%)"
               min="1"
               max="100"
               step="0.001"
@@ -201,12 +201,12 @@ export const RateConversion = () => {
                 className={`form-control border border-3 border-success is-valid`}
                 disabled
                 readOnly
-                {...register("conversion")}
+                {...register("conversion", { disabled: true })}
               />
             </div>
           )}
         </div>
-        <button type="submit" className="btn btn-primary mt-3">
+        <button type="submit" className="btn btn-info">
           Convertir
         </button>
       </form>
