@@ -5,8 +5,6 @@ export const AnnuitiesPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
-    getValues,
   } = useForm();
 
   const onSubmit = ({
