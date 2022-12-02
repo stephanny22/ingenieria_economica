@@ -1,14 +1,21 @@
 import { HomePage } from "../pages/HomePage";
 import { Routes, Route } from "react-router-dom";
-import { RateConversion } from "../pages/RateConversion";
+import { RateConversionPage } from "../pages/RateConversionPage";
+import { AnnuitiesPage } from "../pages/AnnuitiesPage";
+import { NotFoundPage } from "../pages/NotFoundPage";
+import { AmortizationPage } from "./../pages/AmortizationPage";
+import { CapitalizationPage } from "./../pages/CapitalizationPage";
 
 const AppRouter = () => {
   return (
     <>
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path="/conversion-de-tasas" element={<RateConversion />} />
-        <Route path="*" element={<p>There's nothing here: 404!</p>} />
+        <Route path="/conversion-de-tasas" element={<RateConversionPage />} />
+        <Route path="/anualidades" element={<AnnuitiesPage />} />
+        <Route path="/amortizacion" element={<AmortizationPage />} />
+        <Route path="/capitalizacion" element={<CapitalizationPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

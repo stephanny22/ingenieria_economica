@@ -13,24 +13,7 @@ let items = [
   },
   {
     name: "Anualidades",
-    children: [
-      {
-        name: "Anualidad ordinaria",
-        href: "/anualidad-ordinaria",
-      },
-      {
-        name: "Anualidad vencida",
-        href: "/anualidad-vencida",
-      },
-      {
-        name: "Anualidad anticipada",
-        href: "/anualidad-anticipada",
-      },
-      {
-        name: "Anualidad diferida",
-        href: "/anualidad-diferida",
-      },
-    ],
+    href: "/anualidades",
   },
   {
     name: "Amortización",

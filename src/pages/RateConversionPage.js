@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { conversion_interes } from "../utils/conversion_tasas";
 
-export const RateConversion = () => {
+export const RateConversionPage = () => {
   const {
     register,
     handleSubmit,
@@ -10,21 +10,29 @@ export const RateConversion = () => {
     getValues,
   } = useForm();
 
-  const onSubmit = (data) => {
-    const a = {
+  const onSubmit = ({
+    interes_entrada,
+    tasa_entrada,
+    periodo_entrada,
+    pago_entrada,
+    tasa_salida,
+    periodo_salida,
+    pago_salida,
+  }) => {
+    const data = {
       entrada: {
-        interes: (data.interes_entrada / 100).toString(),
-        tipo_tasa: data.tasa_entrada,
-        periodo: data.periodo_entrada,
-        tipo_interes: data.pago_entrada,
+        interes: (interes_entrada / 100).toString(),
+        tipo_tasa: tasa_entrada,
+        periodo: periodo_entrada,
+        tipo_interes: pago_entrada,
       },
       conversion: {
-        tipo_tasa: data.tasa_salida,
-        periodo: data.periodo_salida,
-        tipo_interes: data.pago_salida,
+        tipo_tasa: tasa_salida,
+        periodo: periodo_salida,
+        tipo_interes: pago_salida,
       },
     };
-    setValue("conversion", (conversion_interes(a) * 100).toFixed(3) + "%");
+    setValue("conversion", (conversion_interes(data) * 100).toFixed(3) + "%");
   };
 
   return (
@@ -201,7 +209,7 @@ export const RateConversion = () => {
                 className={`form-control border border-3 border-success is-valid`}
                 disabled
                 readOnly
-                {...register("conversion", { disabled: true })}
+                {...register("conversion")}
               />
             </div>
           )}

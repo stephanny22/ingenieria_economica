@@ -16,7 +16,6 @@ const equivalencia_tasas = (interes, periodo_a, periodo_b) =>
   ).toFixed(decimales);
 
 export const conversion_interes = (datos) => {
-  console.log("first");
   const { entrada, conversion } = datos;
   let aux = 0.0;
 
