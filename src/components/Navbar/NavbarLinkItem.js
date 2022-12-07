@@ -6,6 +6,7 @@ export const NavbarLinkItem = ({ name, href }) => {
     <LinkContainer
       to={href}
       activeClassName="border-bottom border-3 text-info border-info"
+      className={"d-flex align-items-center"}
     >
       {<Button>{name}</Button>}
     </LinkContainer>

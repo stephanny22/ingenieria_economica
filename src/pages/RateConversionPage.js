@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { conversion_interes } from "../utils/conversion_tasas";
+import { conversion_interes } from "../utils";
 
 export const RateConversionPage = () => {
   const {
@@ -37,9 +37,11 @@ export const RateConversionPage = () => {
 
   return (
     <div className="container py-5">
+      <h1 className="text-center text-info mb-3">Conversión de tasas</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h4 className="mb-3">Interes a convertir</h4>
-        <div className="row">
+        <h4 className="mb-3">Interes</h4>
+        <hr />
+        <div className="row mb-3">
           <div className="mb-3 col-lg-3 col-md-6">
             <input
               type="number"
@@ -47,15 +49,15 @@ export const RateConversionPage = () => {
                 errors.interes_entrada ? "is-invalid" : undefined
               }`}
               placeholder="Digite el interes (%)"
-              min="1"
+              min="0.001"
               max="100"
               step="0.001"
               {...register("interes_entrada", {
                 valueAsNumber: true,
                 required: "El interes es obligatorio.",
                 min: {
-                  value: 1,
-                  message: "El interes debe ser mayor o igual a 1.",
+                  value: 0.001,
+                  message: "El interes debe ser mayor o igual a 0.001",
                 },
                 max: {
                   value: 100,
@@ -78,7 +80,7 @@ export const RateConversionPage = () => {
                 required: "El tipo de tasa es obligatorio.",
               })}
             >
-              <option value="">Seleccione tipo de tasa</option>
+              <option value="">Tipo de tasa</option>
               <option value="i">Efectivo</option>
               <option value="i">Periodico</option>
               <option value="j">Nominal</option>
@@ -98,10 +100,10 @@ export const RateConversionPage = () => {
                 errors.periodo_entrada ? "is-invalid" : undefined
               }`}
               {...register("periodo_entrada", {
-                required: "La periocidad de la tasa es obligatoria.",
+                required: "El periodo de la tasa es obligatorio.",
               })}
             >
-              <option value="">Seleccione periocidad de la tasa</option>
+              <option value="">Periodo de la tasa</option>
               <option value="1">Mensual</option>
               <option value="2">Bimestral</option>
               <option value="3">Trimestral</option>
@@ -124,7 +126,7 @@ export const RateConversionPage = () => {
                 required: "La forma de pago a los interes es obligatoria.",
               })}
             >
-              <option value="">Seleccione forma de pagos a los interes</option>
+              <option value="">Ordinaria o anticipada</option>
               <option value="i">Ordinaria</option>
               <option value="ia">Anticipada</option>
             </select>
@@ -135,8 +137,9 @@ export const RateConversionPage = () => {
             )}
           </div>
         </div>
-        <h4 className="mb-3">Interes convertido</h4>
-        <div className="row">
+        <h4 className="mb-3">Convertir a</h4>
+        <hr />
+        <div className="row mb-3">
           <div className="mb-3 col-lg-3 col-md-6">
             <select
               className={`form-select ${
@@ -146,7 +149,7 @@ export const RateConversionPage = () => {
                 required: "El tipo de tasa es obligatorio.",
               })}
             >
-              <option value="">Seleccione tipo de tasa</option>
+              <option value="">Tipo de tasa</option>
               <option value="i">Efectivo</option>
               <option value="i">Periodico</option>
               <option value="j">Nominal</option>
@@ -166,10 +169,10 @@ export const RateConversionPage = () => {
                 errors.periodo_salida ? "is-invalid" : undefined
               }`}
               {...register("periodo_salida", {
-                required: "La periocidad de la tasa es obligatoria.",
+                required: "El periodo de la tasa es obligatorio.",
               })}
             >
-              <option value="">Seleccione periocidad de la tasa</option>
+              <option value="">Periodo de la tasa</option>
               <option value="1">Mensual</option>
               <option value="2">Bimestral</option>
               <option value="3">Trimestral</option>
@@ -192,7 +195,7 @@ export const RateConversionPage = () => {
                 required: "La forma de pago a los interes es obligatoria.",
               })}
             >
-              <option value="">Seleccione forma de pagos a los interes</option>
+              <option value="">Ordinaria o anticipada</option>
               <option value="i">Ordinaria</option>
               <option value="ia">Anticipada</option>
             </select>
@@ -202,11 +205,18 @@ export const RateConversionPage = () => {
               </div>
             )}
           </div>
+        </div>
+        <div className="text-center mb-3">
+          <button type="submit" className="btn btn-info rounded">
+            Convertir
+          </button>
+        </div>
+        <div className="row d-flex justify-content-center">
           {getValues("conversion") && (
-            <div className="mb-3 col-lg-3 col-md-6">
+            <div className="mt-3 col-lg-3 col-md-6">
               <input
                 type="text"
-                className={`form-control border border-3 border-success is-valid`}
+                className={`form-control border border-3 border-success is-valid rounded-5 text-center`}
                 disabled
                 readOnly
                 {...register("conversion")}
@@ -214,9 +224,6 @@ export const RateConversionPage = () => {
             </div>
           )}
         </div>
-        <button type="submit" className="btn btn-info">
-          Convertir
-        </button>
       </form>
     </div>
   );
