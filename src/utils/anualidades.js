@@ -62,10 +62,10 @@ const vp_periodo_dif = (interes, cuota, anualidad, k) =>
     ) / Math.log(1 + interes)
   );
 
-const vf_anualidad_dif = (interes, periodo, cuota, k) =>
+/*const vf_anualidad_dif = (interes, periodo, cuota, k) =>
   cuota *
   ((Math.pow(1 + interes, periodo) - 1) / interes) *
-  Math.pow(1 + interes, -k);
+  Math.pow(1 + interes, -k);*/
 
 export const anualidades = (o) => {
   let { tipo, interes, periodo, cuota, k, anualidad, salida } = o;
