@@ -6,27 +6,27 @@ import { amortizacion, formatter } from "../utils";
 
 const columns = [
   {
-    name: <h5>hola</h5>,
+    name: <h5>Periodo</h5>,
     selector: (row) => row.periodo,
     center: true,
   },
   {
-    name: "Saldo",
+    name: <h5>Saldo</h5>,
     selector: (row) => formatter.format(row.saldo),
     center: true,
   },
   {
-    name: "Interés",
+    name: <h5>Interés</h5>,
     selector: (row) => formatter.format(row.interes),
     center: true,
   },
   {
-    name: "Cuota",
+    name: <h5>Cuota</h5>,
     selector: (row) => formatter.format(row.cuota),
     center: true,
   },
   {
-    name: "Amortización",
+    name: <h5>Amortización</h5>,
     selector: (row) => formatter.format(row.amortizacion),
     center: true,
   },
@@ -72,6 +72,7 @@ export const AmortizationPage = () => {
     <div className="container py-5">
       <form onSubmit={handleSubmit(onSubmit)} className="mb-3">
         <h4 className="mb-3">Interes</h4>
+        <hr />
         <div className="row">
           <div className="mb-3 col-lg-3 col-md-6">
             <input
@@ -161,6 +162,7 @@ export const AmortizationPage = () => {
           </div>
         </div>
         <h4 className="mb-3">Periodo</h4>
+        <hr />
         <div className="row">
           <div className="mb-3 col-lg-3 col-md-6">
             <input
@@ -208,6 +210,7 @@ export const AmortizationPage = () => {
           </div>
         </div>
         <h4 className="mb-3">Cuota</h4>
+        <hr />
         <div className="row">
           <div className="mb-3 col-lg-3 col-md-6">
             <input
@@ -233,6 +236,7 @@ export const AmortizationPage = () => {
           </div>
         </div>
         <h4 className="mb-3">Anualidad</h4>
+        <hr />
         <div className="row">
           <div className="mb-3 col-lg-3 col-md-6">
             <input

@@ -3,3 +3,4 @@ export * from "./conversion_tasas";
 export * from "./formatter";
 export * from "./paginationOptions";
 export * from "./anualidades";
+export * from "./capitalizacion";

@@ -17,8 +17,8 @@ export const AnnuitiesPage = () => {
     handleSubmit,
     formState: { errors },
     watch,
-    reset,
     getValues,
+    setValue,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -41,7 +41,11 @@ export const AnnuitiesPage = () => {
         getValues("tipoOperacion") === "anualidad" ? "0" : data.anualidad,
     };
 
-    console.log(anualidades(anualidadData));
+    if (getValues("tipoOperacion") === "periodo") {
+      setValue("result", anualidades(anualidadData));
+    } else {
+      setValue("result", anualidades(anualidadData).toFixed(3));
+    }
   };
 
   return (
@@ -49,13 +53,6 @@ export const AnnuitiesPage = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1 className="text-center text-info mb-3">Anualidades</h1>
         <div className="row">
-          <div className="col-sm-3">
-            <AnnuitiesCheckType register={register} />
-            {watch("tipoAnualidad") !== "diferida" && (
-              <AnnuitiesCheckValue register={register} />
-            )}
-            <AnnuitiesCheckOperation register={register} />
-          </div>
           <div className="col-sm-9">
             <AnnuitiesInterest register={register} errors={errors} />
             <AnnuitiesPeriod
@@ -76,6 +73,24 @@ export const AnnuitiesPage = () => {
             <button type="submit" className="btn btn-info">
               Calcular
             </button>
+          </div>
+          <div className="col-sm-3">
+            <AnnuitiesCheckType register={register} />
+            {watch("tipoAnualidad") !== "diferida" && (
+              <AnnuitiesCheckValue register={register} />
+            )}
+            <AnnuitiesCheckOperation register={register} />
+            {getValues("result") && (
+              <div className="mt-3">
+                <input
+                  type="text"
+                  className={`form-control border border-3 border-success is-valid rounded-5 text-center`}
+                  disabled
+                  readOnly
+                  {...register("result")}
+                />
+              </div>
+            )}
           </div>
         </div>
       </form>
