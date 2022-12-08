@@ -102,6 +102,8 @@ export const anualidades = (o) => {
       return anualidad_anticipada(salida, interes, periodo, cuota, anualidad);
     case "diferida":
       return anualidad_diferida(salida, interes, periodo, cuota, k, anualidad);
+    default:
+      return null;
   }
 };
 
