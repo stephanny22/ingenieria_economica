@@ -53,7 +53,7 @@ export const AnnuitiesPage = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1 className="text-center text-info mb-3">Anualidades</h1>
         <div className="row">
-          <div className="col-sm-9">
+          <div className="col-sm-9 order-2 order-md-1">
             <AnnuitiesInterest register={register} errors={errors} />
             <AnnuitiesPeriod
               register={register}
@@ -74,7 +74,7 @@ export const AnnuitiesPage = () => {
               Calcular
             </button>
           </div>
-          <div className="col-sm-3">
+          <div className="col-sm-3 order-1 order-md-2">
             <AnnuitiesCheckType register={register} />
             {watch("tipoAnualidad") !== "diferida" && (
               <AnnuitiesCheckValue register={register} />

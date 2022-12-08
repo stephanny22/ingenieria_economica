@@ -70,6 +70,7 @@ export const AmortizationPage = () => {
 
   return (
     <div className="container py-5">
+      <h1 className="text-center text-info mb-3">Amortización</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="mb-3">
         <h4 className="mb-3">Interes</h4>
         <hr />
