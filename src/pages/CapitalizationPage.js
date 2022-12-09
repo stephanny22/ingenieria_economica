@@ -13,27 +13,27 @@ import {
 
 const columns = [
   {
-    name: <span>Periodo</span>,
+    name: <span className="text-truncate h5">Periodo</span>,
     selector: (row) => row.periodo,
     center: true,
   },
   {
-    name: <span>Saldo</span>,
+    name: <span className="text-truncate h5">Saldo</span>,
     selector: (row) => formatter.format(row.saldo),
     center: true,
   },
   {
-    name: <span>Interés</span>,
+    name: <span className="text-truncate h5">Interés</span>,
     selector: (row) => formatter.format(row.interes),
     center: true,
   },
   {
-    name: <span>Cuota</span>,
+    name: <span className="text-truncate h5">Cuota</span>,
     selector: (row) => formatter.format(row.cuota),
     center: true,
   },
   {
-    name: <span>Incremento</span>,
+    name: <span className="text-truncate h5">Incremento</span>,
     selector: (row) => formatter.format(row.capitalizacion),
     center: true,
   },
