@@ -1,17 +1,20 @@
-export const AnnuitiesPeriod = ({ register, errors, watch }) => {
+export const CapitalizationPeriod = ({ register, errors, watch }) => {
   return (
     <>
-      <h4 className="mb-3">Numero de periodos</h4>
+      <h4 className="mb-3">Periodo</h4>
       <hr />
       <div className="row">
         {watch("tipoOperacion") !== "periodo" && (
           <div className="mb-3 col-lg-4 col-md-6">
             <input
               type="number"
-              className={`form-control ${errors.valor ? "is-invalid" : ""}`}
-              placeholder="Digite el numero de periodos"
+              className={`form-control ${
+                errors.periodo ? "is-invalid" : undefined
+              }`}
+              placeholder="Digite el número de periodos"
               min="1"
-              {...register("valor", {
+              step="0.1"
+              {...register("periodo", {
                 valueAsNumber: true,
                 required: "El numero de periodos es obligatorio.",
                 min: {
@@ -20,19 +23,21 @@ export const AnnuitiesPeriod = ({ register, errors, watch }) => {
                 },
               })}
             />
-            {errors.valor && (
-              <div className="invalid-feedback">{errors.valor.message}</div>
+            {errors.periodo && (
+              <div className="invalid-feedback">{errors.periodo.message}</div>
             )}
           </div>
         )}
         <div className="mb-3 col-lg-4 col-md-6">
           <select
-            className={`form-select ${errors.tipo_periodo ? "is-invalid" : ""}`}
-            {...register("tipo_periodo", {
-              required: "La periocidad de la tasa es obligatoria.",
+            className={`form-select ${
+              errors.periodo_tiempo ? "is-invalid" : undefined
+            }`}
+            {...register("periodo_tiempo", {
+              required: "El periodo de la tasa es obligatorio.",
             })}
           >
-            <option value="">Tipo de periodo</option>
+            <option value="">Periodo de la tasa</option>
             <option value="1">Mensual</option>
             <option value="2">Bimestral</option>
             <option value="3">Trimestral</option>
@@ -40,9 +45,9 @@ export const AnnuitiesPeriod = ({ register, errors, watch }) => {
             <option value="6">Semestral</option>
             <option value="12">Anual</option>
           </select>
-          {errors.tipo_periodo && (
+          {errors.periodo_tiempo && (
             <div className="invalid-feedback">
-              {errors.tipo_periodo.message}
+              {errors.periodo_tiempo.message}
             </div>
           )}
         </div>

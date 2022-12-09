@@ -1,23 +1,25 @@
-export const AnnuitiesInterest = ({ register, errors }) => {
+export const RateConversionInterest = ({ register, errors }) => {
   return (
     <>
-      <h4 className="mb-3">Interes</h4>
+      <h4 className="mb-3">Interés</h4>
       <hr />
-      <div className="row">
-        <div className="mb-3 col-lg-4 col-md-6">
+      <div className="row mb-3">
+        <div className="mb-3 col-lg-3 col-md-6">
           <input
             type="number"
-            className={`form-control ${errors.interes ? "is-invalid" : ""}`}
-            placeholder="Digite el interes (%)"
+            className={`form-control ${
+              errors.interes_entrada ? "is-invalid" : undefined
+            }`}
+            placeholder="Digite el interés (%)"
             min="0.001"
             max="100"
             step="0.001"
-            {...register("interes", {
+            {...register("interes_entrada", {
               valueAsNumber: true,
-              required: "El interes es obligatorio.",
+              required: "El interés es obligatorio.",
               min: {
-                value: 0,
-                message: "El interes debe ser mayor o igual a 0.",
+                value: 0.001,
+                message: "El interés debe ser mayor o igual a 0.001",
               },
               max: {
                 value: 100,
@@ -25,35 +27,41 @@ export const AnnuitiesInterest = ({ register, errors }) => {
               },
             })}
           />
-          {errors.interes && (
-            <div className="invalid-feedback">{errors.interes.message}</div>
+          {errors.interes_entrada && (
+            <div className="invalid-feedback">
+              {errors.interes_entrada.message}
+            </div>
           )}
         </div>
-        <div className="mb-3 col-lg-4 col-md-6">
+        <div className="mb-3 col-lg-3 col-md-6">
           <select
-            className={`form-select ${errors.tipo_tasa ? "is-invalid" : ""}`}
-            {...register("tipo_tasa", {
+            className={`form-select ${
+              errors.tasa_entrada ? "is-invalid" : undefined
+            }`}
+            {...register("tasa_entrada", {
               required: "El tipo de tasa es obligatorio.",
             })}
           >
             <option value="">Tipo de tasa</option>
-            <option value="i">Efectivo</option>
-            <option value="i">Periodico</option>
+            <option value="i">Efectiva</option>
+            <option value="i">Periodica</option>
             <option value="j">Nominal</option>
             <option value="j">Capitalizable</option>
             <option value="j">Convertible</option>
             <option value="j">Vencida</option>
           </select>
-          {errors.tipo_tasa && (
-            <div className="invalid-feedback">{errors.tipo_tasa.message}</div>
+          {errors.tasa_entrada && (
+            <div className="invalid-feedback">
+              {errors.tasa_entrada.message}
+            </div>
           )}
         </div>
-        <div className="mb-3 col-lg-4 col-md-6">
+        <div className="mb-3 col-lg-3 col-md-6">
           <select
             className={`form-select ${
-              errors.interes_periodo ? "is-invalid" : ""
+              errors.periodo_entrada ? "is-invalid" : undefined
             }`}
-            {...register("interes_periodo", {
+            {...register("periodo_entrada", {
               required: "El periodo de la tasa es obligatorio.",
             })}
           >
@@ -65,26 +73,28 @@ export const AnnuitiesInterest = ({ register, errors }) => {
             <option value="6">Semestral</option>
             <option value="12">Anual</option>
           </select>
-          {errors.interes_periodo && (
+          {errors.periodo_entrada && (
             <div className="invalid-feedback">
-              {errors.interes_periodo.message}
+              {errors.periodo_entrada.message}
             </div>
           )}
         </div>
-        <div className="mb-3 col-lg-4 col-md-6">
+        <div className="mb-3 col-lg-3 col-md-6">
           <select
-            className={`form-select ${errors.tipo_interes ? "is-invalid" : ""}`}
-            {...register("tipo_interes", {
+            className={`form-select ${
+              errors.pago_entrada ? "is-invalid" : undefined
+            }`}
+            {...register("pago_entrada", {
               required: "La forma de pago a los interes es obligatoria.",
             })}
           >
-            <option value="">Forma de pagos a los interes</option>
+            <option value="">Forma de pago</option>
             <option value="i">Ordinaria</option>
             <option value="ia">Anticipada</option>
           </select>
-          {errors.tipo_interes && (
+          {errors.pago_entrada && (
             <div className="invalid-feedback">
-              {errors.tipo_interes.message}
+              {errors.pago_entrada.message}
             </div>
           )}
         </div>

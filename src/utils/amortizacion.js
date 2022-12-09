@@ -3,6 +3,14 @@ import { conversion_interes } from "./conversion_tasas";
 const cuota_amortización = (interes, periodo, anualidad) =>
   anualidad / ((1 - Math.pow(1 + interes, -periodo)) / interes);
 
+const anualidad_amortizacion = (interes, periodo, cuota) =>
+  cuota * ((1 - Math.pow(1 + interes, -periodo)) / interes);
+
+const periodo_amortizacion = (interes, anualidad, cuota) =>
+  Math.round(
+    Math.log(1 / (1 - (anualidad / cuota) * interes)) / Math.log(1 + interes)
+  );
+
 export const amortizacion = (objeto) => {
   let { cuota, periodo, interes, anualidad } = objeto;
   if (periodo.periodo === "0") periodo.periodo = interes.periodo;
@@ -31,9 +39,14 @@ export const amortizacion = (objeto) => {
   anualidad = parseFloat(anualidad);
 
   if (cuota === 0)
-    cuota = parseFloat(
-      cuota_amortización(interes_f, periodo.valor, anualidad).toFixed(4)
-    );
+    cuota = cuota_amortización(interes_f, periodo.valor, anualidad);
+
+  if (periodo.valor === 0) {
+    periodo.valor = periodo_amortizacion(interes_f, anualidad, cuota);
+  }
+  if (anualidad === 0) {
+    anualidad = anualidad_amortizacion(interes_f, periodo.valor, cuota);
+  }
 
   let array = [];
   for (let i = 0; i <= periodo.valor; i++) {
@@ -52,7 +65,6 @@ export const amortizacion = (objeto) => {
       });
     }
   }
-  console.log(array);
   return array;
 };
 
@@ -60,13 +72,13 @@ const calcular_amortizacion = (periodo_anterior, interes, cuota) => {
   const aux = {};
   const { saldo } = periodo_anterior;
 
-  aux["cuota"] = cuota.toFixed(3);
-  aux["interes"] = (saldo * interes).toFixed(3);
-  aux["amortizacion"] = (aux["cuota"] - aux["interes"]).toFixed(3);
+  aux["cuota"] = cuota;
+  aux["interes"] = saldo * interes;
+  aux["amortizacion"] = aux["cuota"] - aux["interes"];
 
   if (saldo - aux["amortizacion"] >= -0.1 && saldo - aux["amortizacion"] <= 0.1)
     aux["saldo"] = 0;
-  else aux["saldo"] = (saldo - aux["amortizacion"]).toFixed(3);
+  else aux["saldo"] = saldo - aux["amortizacion"];
 
   return aux;
 };

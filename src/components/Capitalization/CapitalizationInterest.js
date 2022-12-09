@@ -1,27 +1,29 @@
-export const AnnuitiesInterest = ({ register, errors }) => {
+export const CapitalizationInterest = ({ register, errors }) => {
   return (
     <>
-      <h4 className="mb-3">Interes</h4>
+      <h4 className="mb-3">Interés</h4>
       <hr />
       <div className="row">
         <div className="mb-3 col-lg-4 col-md-6">
           <input
             type="number"
-            className={`form-control ${errors.interes ? "is-invalid" : ""}`}
+            className={`form-control ${
+              errors.interes ? "is-invalid" : undefined
+            }`}
             placeholder="Digite el interes (%)"
             min="0.001"
             max="100"
             step="0.001"
             {...register("interes", {
               valueAsNumber: true,
-              required: "El interes es obligatorio.",
+              required: "El interés es obligatorio.",
               min: {
-                value: 0,
-                message: "El interes debe ser mayor o igual a 0.",
+                value: 1,
+                message: "El interés debe ser mayor o igual a 0.001.",
               },
               max: {
                 value: 100,
-                message: "El interes debe ser menor o igual a 100.",
+                message: "El interés debe ser menor o igual a 100.",
               },
             })}
           />
@@ -31,8 +33,8 @@ export const AnnuitiesInterest = ({ register, errors }) => {
         </div>
         <div className="mb-3 col-lg-4 col-md-6">
           <select
-            className={`form-select ${errors.tipo_tasa ? "is-invalid" : ""}`}
-            {...register("tipo_tasa", {
+            className={`form-select ${errors.tasa ? "is-invalid" : undefined}`}
+            {...register("tasa", {
               required: "El tipo de tasa es obligatorio.",
             })}
           >
@@ -44,8 +46,8 @@ export const AnnuitiesInterest = ({ register, errors }) => {
             <option value="j">Convertible</option>
             <option value="j">Vencida</option>
           </select>
-          {errors.tipo_tasa && (
-            <div className="invalid-feedback">{errors.tipo_tasa.message}</div>
+          {errors.tasa && (
+            <div className="invalid-feedback">{errors.tasa.message}</div>
           )}
         </div>
         <div className="mb-3 col-lg-4 col-md-6">
@@ -73,19 +75,17 @@ export const AnnuitiesInterest = ({ register, errors }) => {
         </div>
         <div className="mb-3 col-lg-4 col-md-6">
           <select
-            className={`form-select ${errors.tipo_interes ? "is-invalid" : ""}`}
-            {...register("tipo_interes", {
+            className={`form-select ${errors.pago ? "is-invalid" : ""}`}
+            {...register("pago", {
               required: "La forma de pago a los interes es obligatoria.",
             })}
           >
-            <option value="">Forma de pagos a los interes</option>
+            <option value="">Forma de pago</option>
             <option value="i">Ordinaria</option>
             <option value="ia">Anticipada</option>
           </select>
-          {errors.tipo_interes && (
-            <div className="invalid-feedback">
-              {errors.tipo_interes.message}
-            </div>
+          {errors.pago && (
+            <div className="invalid-feedback">{errors.pago.message}</div>
           )}
         </div>
       </div>

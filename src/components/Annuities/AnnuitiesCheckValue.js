@@ -1,5 +1,3 @@
-import React from "react";
-
 export const AnnuitiesCheckValue = ({ register }) => {
   return (
     <div className="mb-3">

@@ -6,3 +6,4 @@ export * from "./AnnuitiesGrace";
 export * from "./AnnuitiesInterest";
 export * from "./AnnuitiesPeriod";
 export * from "./Annuity";
+export * from "./AnnuitiesModal";

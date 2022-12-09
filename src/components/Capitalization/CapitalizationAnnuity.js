@@ -1,4 +1,4 @@
-export const Annuity = ({ register, errors }) => {
+export const CapitalizationAnnuity = ({ register, errors }) => {
   return (
     <>
       <h4 className="mb-3">Anualidad</h4>
@@ -7,10 +7,11 @@ export const Annuity = ({ register, errors }) => {
         <div className="mb-3 col-lg-4 col-md-6">
           <input
             type="number"
-            className={`form-control ${errors.anualidad ? "is-invalid" : ""}`}
-            placeholder="Digite la anualidad"
+            className={`form-control ${
+              errors.anualidad ? "is-invalid" : undefined
+            }`}
+            placeholder="Digite la cuota"
             min="1"
-            step="0.001"
             {...register("anualidad", {
               valueAsNumber: true,
               required: "La anualidad es obligatoria.",

@@ -3,6 +3,14 @@ import { conversion_interes } from "./conversion_tasas";
 const cuota_capitalizacion = (interes, periodo, anualidad) =>
   anualidad / ((Math.pow(1 + interes, periodo) - 1) / interes);
 
+const anualidad_capitalizacion = (interes, periodo, cuota) =>
+  cuota * ((Math.pow(1 + interes, periodo) - 1) / interes);
+
+const periodo_capitalizacion = (interes, anualidad, cuota) =>
+  Math.round(
+    Math.log(1 + (anualidad / cuota) * interes) / Math.log(1 + interes)
+  );
+
 export const capitalizacion = (objeto) => {
   let { cuota, periodo, interes, anualidad } = objeto;
   if (periodo.periodo === "0") periodo.periodo = interes.periodo;
@@ -31,9 +39,11 @@ export const capitalizacion = (objeto) => {
   anualidad = parseFloat(anualidad);
 
   if (cuota === 0)
-    cuota = parseFloat(
-      cuota_capitalizacion(interes_f, periodo.valor, anualidad).toFixed(4)
-    );
+    cuota = cuota_capitalizacion(interes_f, periodo.valor, anualidad);
+  if (periodo.valor === 0)
+    periodo.valor = periodo_capitalizacion(interes_f, anualidad, cuota);
+  if (anualidad === 0)
+    anualidad = anualidad_capitalizacion(interes_f, periodo.valor, cuota);
 
   let array = [];
   for (let i = 0; i <= periodo.valor; i++) {
@@ -52,7 +62,6 @@ export const capitalizacion = (objeto) => {
       });
     }
   }
-  /* Printing the array to the console. */
   return array;
 };
 
@@ -68,4 +77,3 @@ const calcular_capitalizacion = (periodo_anterior, interes, cuota) => {
 
   return aux;
 };
-

@@ -1,5 +1,3 @@
-import React from "react";
-
 export const AnnuitiesGrace = ({ register, errors }) => {
   return (
     <>

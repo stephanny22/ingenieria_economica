@@ -1,4 +1,4 @@
-export const AnnuitiesFee = ({ register, errors }) => {
+export const CapitalizationFee = ({ register, errors }) => {
   return (
     <>
       <h4 className="mb-3">Cuota</h4>
@@ -7,8 +7,10 @@ export const AnnuitiesFee = ({ register, errors }) => {
         <div className="mb-3 col-lg-4 col-md-6">
           <input
             type="number"
-            className={`form-control ${errors.cuota ? "is-invalid" : ""}`}
-            placeholder="Digite el valor de la cuota"
+            className={`form-control ${
+              errors.cuota ? "is-invalid" : undefined
+            }`}
+            placeholder="Digite la cuota"
             min="1"
             step="0.001"
             {...register("cuota", {

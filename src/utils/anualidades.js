@@ -78,7 +78,6 @@ export const anualidades = (o) => {
     interes.tipo_tasa !== "i" ||
     interes.tipo_interes !== "i"
   ) {
-    console.log(o);
     const objeto = {
       entrada: interes,
       conversion: {
@@ -92,8 +91,6 @@ export const anualidades = (o) => {
     interes.tipo_interes = "i";
     interes.periodo = periodo.periodo;
   }
-
-  // console.log(interes, periodo);
 
   switch (tipo) {
     case "ordinaria":
@@ -119,8 +116,6 @@ const anualidad_ordinaria = (
   periodo.valor = parseFloat(periodo.valor);
   cuota = parseFloat(cuota);
   anualidad = parseFloat(anualidad);
-
-  console.log(interes.interes, periodo.valor, cuota, anualidad);
 
   if (
     interes.interes !== 0 &&
@@ -168,8 +163,6 @@ const anualidad_anticipada = (
   periodo.valor = parseFloat(periodo.valor);
   cuota = parseFloat(cuota);
   anualidad = parseFloat(anualidad);
-
-  console.log(interes.interes, periodo.valor, cuota, anualidad);
 
   if (
     interes.interes !== 0 &&
@@ -219,8 +212,6 @@ const anualidad_diferida = (
   cuota = parseFloat(cuota);
   anualidad = parseFloat(anualidad);
   k = parseFloat(k);
-
-  console.log(interes.interes, periodo.valor, cuota, anualidad, k);
 
   if (
     interes.interes !== 0 &&
