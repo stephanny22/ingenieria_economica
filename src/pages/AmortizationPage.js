@@ -89,7 +89,7 @@ export const AmortizationPage = () => {
                 <AmortizacionAnnuity register={register} errors={errors} />
               )}
             <button type="submit" className="btn btn-info">
-              Convertir
+              Calcular
             </button>
           </div>
           <div className="col-md-3 order-1 order-md-2">

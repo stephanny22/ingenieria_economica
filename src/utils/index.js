@@ -7,3 +7,4 @@ export * from "./capitalizacion";
 export * from "./capitalizeText";
 export * from "./getPeriod";
 export * from "./paymentType";
+export * from "./randomAvatar";

@@ -1,4 +1,5 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { NavbarDropdown } from "./NavbarDropdown";
 import { NavbarLinkItem } from "./NavbarLinkItem";
 
@@ -29,7 +30,9 @@ export const NavbarMenu = () => {
   return (
     <Navbar bg="primary" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">Ing. economica</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
+          Ing. economica
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
