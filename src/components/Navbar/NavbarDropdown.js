@@ -11,14 +11,14 @@ export const NavbarDropdown = ({ name, children }) => {
     <NavDropdown
       title={
         <span
-          className={`${links.includes(pathname) ? "text-info" : "text-white"}`}
+          className={`${links.includes(pathname) ? "text-success" : "text-white"}`}
         >
           {name}
         </span>
       }
       as={NavItem}
       className={`${
-        links.includes(pathname) && "border-bottom border-3 border-info"
+        links.includes(pathname) && "border-bottom border-3 border-success"
       }`}
     >
       {children.map((item) => (

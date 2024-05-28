@@ -1,11 +1,11 @@
-import { MembersItem, VideoItems } from "../components/Home";
+import { MembersItem} from "../components/Home";
 
 export const HomePage = () => {
   const members = [
-    "Julián David Rincón Espinosa",
-    "Juan Diego Moreno Valero",
-    "Angelica Viviana Caballero Morales",
-    "Alvaro Jose Campos Pérez",
+    "Stephanny Guevara",
+    "Miguel Angel Barrera",
+    "Nicol Valentina Barajas ",
+    "Claudia Elena Sanchez",
   ];
 
   const links = [
@@ -29,13 +29,7 @@ export const HomePage = () => {
 
   return (
     <div className="container py-5">
-      <h1 className="text-center text-info">Tutoriales</h1>
-      <div className="row g-4 py-4">
-        {links.map((link, index) => (
-          <VideoItems key={index} {...link} />
-        ))}
-      </div>
-      <h1 className="text-center text-info">Integrantes</h1>
+      <h1 className="text-center text-success">Integrantes</h1>
       <div className="row g-4 py-4">
         {members.map((member, index) => (
           <MembersItem key={index} member={member} />

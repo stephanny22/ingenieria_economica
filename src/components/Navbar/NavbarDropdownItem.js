@@ -7,7 +7,7 @@ export const NavbarDropdownItem = ({ name, href }) => {
       key={name}
       as={LinkContainer}
       to={href}
-      activeClassName="bg-info text-white"
+      activeClassName="bg-success text-white"
     >
       <Button>{name}</Button>
     </NavDropdown.Item>

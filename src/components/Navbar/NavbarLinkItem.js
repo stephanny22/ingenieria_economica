@@ -5,7 +5,7 @@ export const NavbarLinkItem = ({ name, href }) => {
   return (
     <LinkContainer
       to={href}
-      activeClassName="border-bottom border-3 text-info border-info"
+      activeClassName="border-bottom border-3 text-success border-success"
       className={"d-flex align-items-center"}
     >
       {<Button>{name}</Button>}
