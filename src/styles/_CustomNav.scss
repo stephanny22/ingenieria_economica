@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+$backgroundColor: #1A1A1A;
+$textcolor: white;
+$borderLeftColor: #58b5fc;
+
+
+.app-container {
+  display: flex;
+}
+
+.navbar-menu {
+  height: 100vh;
+  width: 250px;
+  background-color: $backgroundColor;
+  position: fixed; /* Cambiar a posición fija para que el menú se superponga */
+  top: 0; /* Colocar el menú en la parte superior */
+  left: 0; /* Colocar el menú en la parte izquierda */
+  z-index: 1000; /* Asegurar que esté en la parte superior */
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.15);
+  transition: all 0.5s ease;
+  overflow-y: auto; /* Agregar desplazamiento vertical si el contenido es demasiado largo */
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; /* Agregar desplazamiento vertical si el contenido es demasiado largo */
+  box-sizing: border-box;
+  margin-left: 250px; /* Dejar espacio para el menú en el lado izquierdo */
+}
+
+.burger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.burger img {
+  width: 80px;
+  height: auto;
+  cursor: pointer;
+}
+
+.navbar__list {
+  list-style-type: none;
+}
+
+.navbar__li {
+  display: block;
+  padding: 12px 0;
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height: 38px;
+  color: $textcolor;
+  font-family: "Lato";
+  font-weight: 400;
+}
+
+.navbar__li-box {
+  margin-top: 15px;
+}
+
+.navbar__li-box:hover {
+  border-left: 7px solid $borderLeftColor;
+  cursor: pointer;
+}
