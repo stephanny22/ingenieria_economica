@@ -9,6 +9,8 @@ import {
   AmortizationFee,
   AmortizationInterest,
   AmortizationPeriod,
+  AmortizationCheckfee,
+  AmortizationExtraFee,
 } from "../components/Amortization";
 import backgroundImage from '../assets/fondo4.avif'; // Importa la imagen
 
@@ -114,6 +116,10 @@ export const AmortizationPage = () => {
                     watch("tipoOperacion") !== "anualidad" && (
                       <AmortizacionAnnuity register={register} errors={errors} />
                     )}
+                    {watch("abono") &&
+                    watch("abono") !== "no" && (
+                      <AmortizationExtraFee register={register} errors={errors} />
+                    )}
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
                     <button style={{ backgroundColor: '#FFA500', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
                       CALCULAR
@@ -122,6 +128,7 @@ export const AmortizationPage = () => {
                 </div>
                 <div className="col-md-3 order-1 order-md-1">
                   <AmortizationCheckOperation register={register} />
+                  <AmortizationCheckfee register={register} />
                 </div>
               </div>
             </form>

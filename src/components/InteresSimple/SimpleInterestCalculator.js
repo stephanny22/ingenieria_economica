@@ -208,7 +208,7 @@ const SimpleInterestCalculator = () => {
         {(variableToCalculate !== 'principal' || variableToCalculate === 'rate' || variableToCalculate === 'years') && (
           <div style={{ marginBottom: '10px' }}>
             <label style={{ color: 'white' }}>
-              Principal (C):
+              Capital Inicial (P):
               <input
                 type="number"
                 value={principal}
@@ -253,7 +253,7 @@ const SimpleInterestCalculator = () => {
         {variableToCalculate !== 'years' && (
           <div style={{ marginBottom: '10px' }}>
             <label style={{ color: 'white' }}>
-              Tiempo (t):
+              Tiempo (n):
               <input
                 type="number"
                 value={years}
@@ -303,7 +303,7 @@ const SimpleInterestCalculator = () => {
         <div style={{ marginTop: '20px', color: 'white' }}>
           <h3>Resultado</h3>
           <p>
-            {variableToCalculate.charAt(0).toUpperCase() + variableToCalculate.slice(1)}: {result.toFixed(2)} {currency}
+            {"Resultado"}: {result.toFixed(2)} {currency}
           </p>
         </div>
       )}
